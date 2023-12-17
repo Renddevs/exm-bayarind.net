@@ -19,8 +19,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Vleko.SiPeneliti.Core\Vleko.Bayarind.Core.csproj" />
-		<ProjectReference Include="..\..\Vleko.SiPeneliti.Data\Vleko.SiPeneliti.Data.csproj" />
+		<ProjectReference Include="..\..\Vleko.Bayarind.Core\Vleko.Bayarind.Core.csproj" />
+		<ProjectReference Include="..\..\Vleko.Bayarind.Data\Vleko.Bayarind.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

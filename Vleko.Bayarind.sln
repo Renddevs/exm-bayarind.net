@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{671D1BB3-20B6-46A9-B4A3-55E9A621A974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bayarind.Infrastructure.HttpRequest", "Bayarind.Infrastructure.HttpRequest\Bayarind.Infrastructure.HttpRequest.csproj", "{0C9B1726-57CF-4F7A-865A-01D6018B36D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,10 @@ Global
 		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C9B1726-57CF-4F7A-865A-01D6018B36D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9B1726-57CF-4F7A-865A-01D6018B36D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9B1726-57CF-4F7A-865A-01D6018B36D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9B1726-57CF-4F7A-865A-01D6018B36D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF} = {F9DEF7A6-7E9C-459E-8506-DC837F1867DC}
 		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872} = {F9DEF7A6-7E9C-459E-8506-DC837F1867DC}
+		{0C9B1726-57CF-4F7A-865A-01D6018B36D0} = {671D1BB3-20B6-46A9-B4A3-55E9A621A974}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4A41CD0-B5B9-4489-9376-C8BCB53AD104}
