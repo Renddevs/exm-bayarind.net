@@ -9,10 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Vleko.Result" Version="1.0.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Service\" />
+    <ProjectReference Include="..\Bayarind.Infrastructure.HttpRequest\Bayarind.Infrastructure.HttpRequest.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,18 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Bayarind.Infrastructure.PaymentGateway.Interface;
+using Bayarind.Infrastructure.PaymentGateway.Service;
 //using Bayarind.Infrastructure.HttpRequest.Interface;
 //using Bayarind.Infrastructure.HttpRequest.Service;
 
-namespace Homeplate.Infrastructure.HttpRequest
+namespace Homeplate.Infrastructure.PaymentGateway
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection RegisterHttpRequest(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection RegisterPaymentGateway(this IServiceCollection services, IConfiguration configuration)
         {
 
-            //services.AddTransient<IHttpRequest, HttpRequestServices>();
+            services.AddTransient<IPaymentGatewayService, PaymentGatewayService>();
 
             return services;
         }

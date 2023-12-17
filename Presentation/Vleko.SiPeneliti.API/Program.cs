@@ -13,6 +13,7 @@ using Hangfire;
 using Hangfire.SqlServer;
 using HangfireBasicAuthenticationFilter;
 using Vleko.Bayarind.API.Handler;
+using Homeplate.Infrastructure.PaymentGateway;
 
 namespace Vleko.Bayarind.API
 {
@@ -63,6 +64,8 @@ namespace Vleko.Bayarind.API
 
             builder.Services.RegisterData(_configuration);
             builder.Services.RegisterCore(_configuration);
+            builder.Services.RegisterHttpRequest(_configuration);
+            builder.Services.RegisterPaymentGateway(_configuration);
 
             builder.Services.AddHsts(options =>
             {
