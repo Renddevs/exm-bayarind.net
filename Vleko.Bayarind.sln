@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F9DEF7A6-7E9C-459E-8506-DC837F1867DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vleko.Bayarind.Core", "Vleko.SiPeneliti.Core\Vleko.Bayarind.Core.csproj", "{A123C36A-CEF5-4984-B854-8EB2342C9039}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vleko.SiPeneliti.Data", "Vleko.SiPeneliti.Data\Vleko.SiPeneliti.Data.csproj", "{6D16FC79-E0A0-416F-8B8A-C079BCE58CF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vleko.Bayarind.API", "Presentation\Vleko.SiPeneliti.API\Vleko.Bayarind.API.csproj", "{8FE53331-B058-49B8-8D6F-5F8EB908BDAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vleko.Bayarind.Web", "Presentation\Vleko.SiPeneliti.Web\Vleko.Bayarind.Web.csproj", "{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C72AD1EA-AF8F-4FAC-AB80-DC1212F331CA}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A123C36A-CEF5-4984-B854-8EB2342C9039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A123C36A-CEF5-4984-B854-8EB2342C9039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A123C36A-CEF5-4984-B854-8EB2342C9039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A123C36A-CEF5-4984-B854-8EB2342C9039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D16FC79-E0A0-416F-8B8A-C079BCE58CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D16FC79-E0A0-416F-8B8A-C079BCE58CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D16FC79-E0A0-416F-8B8A-C079BCE58CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D16FC79-E0A0-416F-8B8A-C079BCE58CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8FE53331-B058-49B8-8D6F-5F8EB908BDAF} = {F9DEF7A6-7E9C-459E-8506-DC837F1867DC}
+		{6631B5A7-C030-4A0F-A1F6-2CABE5C38872} = {F9DEF7A6-7E9C-459E-8506-DC837F1867DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4A41CD0-B5B9-4489-9376-C8BCB53AD104}
+	EndGlobalSection
+EndGlobal
