@@ -20,7 +20,7 @@
 
 
 	<ItemGroup>
-		<ProjectReference Include="..\Vleko.SiPeneliti.Data\Vleko.SiPeneliti.Data.csproj" />
+		<ProjectReference Include="..\Vleko.SiPeneliti.Data\Vleko.Bayarind.Data.csproj" />
 	</ItemGroup>
 
 

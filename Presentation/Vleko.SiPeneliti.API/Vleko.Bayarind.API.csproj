@@ -19,13 +19,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Vleko.Bayarind.Core\Vleko.Bayarind.Core.csproj" />
-		<ProjectReference Include="..\..\Vleko.Bayarind.Data\Vleko.Bayarind.Data.csproj" />
+	  <Folder Include="Controllers\V1\General\" />
+	  <Folder Include="Controllers\V1\Identity\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controllers\V1\General\" />
-	  <Folder Include="Controllers\V1\Identity\" />
+	  <ProjectReference Include="..\..\Vleko.SiPeneliti.Core\Vleko.Bayarind.Core.csproj" />
+	  <ProjectReference Include="..\..\Vleko.SiPeneliti.Data\Vleko.Bayarind.Data.csproj" />
 	</ItemGroup>
 
 </Project>
