@@ -20,13 +20,13 @@ namespace Vleko.Bayarind.Core.PaymentGateway
             //CreateMap<SentPaymentFlagRequest, TransactionRequest>().ReverseMap();
         }
     }
-    public class SentPaymentFlagRequest : PaymentFlagRequest, IRequest<StatusResponse>
+    public class SentPaymentFlagRequest : PaymentFlagRequest, IRequest<ObjectResponse<PaymentFlagResponse>>
     {
 
     }
     #endregion
 
-    internal class SentPaymentFlagHandler : IRequestHandler<SentPaymentFlagRequest, StatusResponse>
+    internal class SentPaymentFlagHandler : IRequestHandler<SentPaymentFlagRequest, ObjectResponse<PaymentFlagResponse>>
     {
         private readonly ILogger _logger;
         private readonly IMediator _mediator;
