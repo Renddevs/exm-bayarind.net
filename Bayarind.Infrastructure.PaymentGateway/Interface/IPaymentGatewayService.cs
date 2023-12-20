@@ -11,5 +11,6 @@ namespace Bayarind.Infrastructure.PaymentGateway.Interface
     public interface IPaymentGatewayService
     {
         Task<ObjectResponse<TransactionResponse>> CreateTransaction(TransactionRequest request);
+        Task<ObjectResponse<PaymentFlagResponse>> SendPaymentFlag(PaymentFlagRequest request);
     }
 }
