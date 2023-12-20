@@ -4,23 +4,9 @@ using Vleko.Bayarind.Web.Models;
 
 namespace Vleko.Bayarind.Web.Controllers
 {
-    public class HomeController : BaseController<HomeController>
+    public class PaymentController : BaseController<PaymentController>
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Forbidden()
-        {
-            return View();
-        }
-
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
