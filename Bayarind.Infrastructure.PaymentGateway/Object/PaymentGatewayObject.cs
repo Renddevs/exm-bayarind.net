@@ -18,10 +18,10 @@ namespace Bayarind.Infrastructure.PaymentGateway.Object
     public class TransactionRequest
     {
         public string channelId { get; set; }
-        public string serviceCode { get; set; }
+        public int? serviceCode { get; set; }
         public string currency { get; set; }
-        public string transactionNo { get; set; }
-        public int? transactionAmmount { get; set; }
+        public int? transactionNo { get; set; }
+        public int? transactionAmount { get; set; }
         public string transactionFee { get; set; }
         public List<AdditionalFeeObject> additionafee { get; set; }
         public DateTime transactionDate { get; set; }
@@ -38,7 +38,7 @@ namespace Bayarind.Infrastructure.PaymentGateway.Object
         public string branch { get; set; }
         public string other { get; set; }
         public int? disablePromo { get; set; }
-        public string callbackUrl { get; set; }
+        public string callbackURL { get; set; }
         public string description { get; set; }
         public List<ItemDetailObject> itemDetails { get; set; }
         public string customerAccount { get; set; }
@@ -60,7 +60,6 @@ namespace Bayarind.Infrastructure.PaymentGateway.Object
         public string cardTokenUse { get; set; }
         public string authCode { get; set; }
         public string processFDS { get; set; }
-        public string promocode { get; set; }
         public List<FreeTextObject> freeTexts { get; set; }
         public string additionalData { get; set; }
         public List<SellerDetailObject> sellerDetails { get; set; }
@@ -212,7 +211,7 @@ namespace Bayarind.Infrastructure.PaymentGateway.Object
         public string currency { get; set; }
         public string paymentStatus { get; set; }
         public string paymentMessage { get; set; }
-        public int? flagType { get; set; }
+        public string flagType { get; set; }
         public string paymentReffId { get; set; }
     }
 }

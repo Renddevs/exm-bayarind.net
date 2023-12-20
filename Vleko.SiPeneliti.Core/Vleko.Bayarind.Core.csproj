@@ -27,7 +27,6 @@
 
 	<ItemGroup>
 	  <Folder Include="General\PaymentGateway\Query\" />
-	  <Folder Include="General\PaymentGateway\Object\" />
 	  <Folder Include="Identity\" />
 	</ItemGroup>
 

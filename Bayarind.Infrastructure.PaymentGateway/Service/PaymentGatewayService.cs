@@ -22,14 +22,12 @@ namespace Bayarind.Infrastructure.PaymentGateway.Service
             _request = request;
         }
 
-        public async Task<ObjectResponse<TransactionResponse>> CreateTransaction(TransactionRequest request)
+        public async Task<ObjectResponse<TransactionResponse>> CreateTransaction(TransactionRequest request, string url)
         {
             var result = new ObjectResponse<TransactionResponse>();
             try
             {
-                var url = "";
-                var credentialApi = "";
-                var (IsSuccess, ErrorMessage, Result, ex) = await _request.DoRequestData<TransactionResponse>(HttpMethod.Post, credentialApi, EnumHttpRequest.API_Key, url, request);
+                var (IsSuccess, ErrorMessage, Result, ex) = await _request.DoRequestData<TransactionResponse>(HttpMethod.Post, null, EnumHttpRequest.NoAuth, url, request);
                 if (IsSuccess)
                 {
                     result.Data = Result;

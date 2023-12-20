@@ -9,6 +9,10 @@ using Vleko.Bayarind.Data;
 using Bayarind.Infrastructure.PaymentGateway.Object;
 using Bayarind.Infrastructure.PaymentGateway.Interface;
 using Bayarind.Infrastructure.PaymentGateway.Service;
+using DocumentFormat.OpenXml.VariantTypes;
+using System.Net.WebSockets;
+using Vleko.Bayarind.Data.Model;
+using Microsoft.Identity.Client;
 
 namespace Vleko.Bayarind.Core.PaymentGateway
 {
@@ -50,10 +54,16 @@ namespace Vleko.Bayarind.Core.PaymentGateway
             var result = new ObjectResponse<PaymentFlagResponse>();
             try
             {
-                var create = await _payment.SendPaymentFlag(request);
-                if (!create.Succeeded) {
-                    result.Error("Error sent payment flag", create.Message);
+                var data_transaction = await _context.Entity<TTransaction>().Where(d => d.Id == request.insertId).FirstOrDefaultAsync();
+                var updateFlag = await _payment.SendPaymentFlag(request);
+                if (!updateFlag.Succeeded) {
+                    result.Error("Error sent payment flag", updateFlag.Message);
                     return result;
+                }
+                data_transaction.FlagType = updateFlag.Data.flagType;
+                var update_flag_transaction = await _context.UpdateSave(data_transaction);
+                if (!update_flag_transaction.Success) {
+                    result.Error("Error update data transaction", update_flag_transaction.ex.Message);
                 }
                 result.OK();
             }
