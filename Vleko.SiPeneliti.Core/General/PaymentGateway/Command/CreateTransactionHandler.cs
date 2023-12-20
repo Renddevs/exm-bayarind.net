@@ -64,6 +64,7 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                 #endregion
 
                 var authCode = QuickHash(1+request.transactionAmmount+request.channelId+secretKey);
+                var customerAccount = request.bankId + request.customerPhone.Substring(3);
 
                 var data_transaction = new TTransaction()
                 {
@@ -77,7 +78,7 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                     TransactionExpire = request.transactionExpire,
                     Description = request.description,
                     CallbackUrl = request.callbackURL,
-                    CustomerAccount = request.customerAccount,
+                    CustomerAccount = customerAccount,
                     CustomerName = request.customerName,
                     AuthCode = authCode,
                     ProcessFds = 0,
@@ -98,8 +99,11 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                     transactionExpire = request.transactionExpire,
                     description = request.description,
                     callbackURL = request.callbackURL,
-                    customerAccount = request.customerAccount,
+                    customerAccount = customerAccount,
                     customerName = request.customerName,
+                    customerEmail = request.customerEmail,
+                    customerPhone = request.customerPhone,
+                    customerBillAddress = request.customerAddress,
                     authCode = authCode,
                 };
                 #endregion
