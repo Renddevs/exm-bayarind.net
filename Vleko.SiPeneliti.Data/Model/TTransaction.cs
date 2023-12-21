@@ -7,7 +7,7 @@ namespace Vleko.Bayarind.Data.Model
 {
     public partial class TTransaction : IEntity
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string ChannelId { get; set; }
         public int? ServiceCode { get; set; }
         public string Currency { get; set; }

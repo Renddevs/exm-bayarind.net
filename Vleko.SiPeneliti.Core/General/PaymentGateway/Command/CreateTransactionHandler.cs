@@ -25,13 +25,13 @@ namespace Vleko.Bayarind.Core.PaymentGateway
             //CreateMap<CreateTransactionRequest, CTransactionRequest>().ReverseMap();
         }
     }
-    public class CreateTransactionRequest : CTransactionRequest, IRequest<StatusResponse>
+    public class CreateTransactionRequest : CTransactionRequest, IRequest<ObjectResponse<string>>
     {
 
     }
     #endregion
 
-    internal class CreateTransactionHandler : IRequestHandler<CreateTransactionRequest, StatusResponse>
+    internal class CreateTransactionHandler : IRequestHandler<CreateTransactionRequest, ObjectResponse<string>>
     {
         private readonly ILogger _logger;
         private readonly IMediator _mediator;
@@ -53,17 +53,17 @@ namespace Vleko.Bayarind.Core.PaymentGateway
             _payment = payment;
             _configuration = configuration;
         }
-        public async Task<StatusResponse> Handle(CreateTransactionRequest request, CancellationToken cancellationToken)
+        public async Task<ObjectResponse<string>> Handle(CreateTransactionRequest request, CancellationToken cancellationToken)
         {
-            StatusResponse result = new StatusResponse();
+            ObjectResponse<string> result = new ObjectResponse<string>();
             try
             {
                 #region config
                 var url = _configuration["bayarindConfig:url"];
-                var secretKey = _configuration["bayarindConfg:secretKey"];
+                var secretKey = _configuration["bayarindConfig:secretKey"];
                 #endregion
 
-                var authCode = QuickHash(1+request.transactionAmmount+request.channelId+secretKey);
+                var authCode = ComputeSha256Hash(request.transactionNo.ToString()+request.transactionAmount.ToString()+request.channelId+secretKey);
                 var customerAccount = request.bankId + request.customerPhone.Substring(3);
 
                 var data_transaction = new TTransaction()
@@ -73,7 +73,7 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                     ServiceCode = request.serviceCode,
                     Currency = request.currency,
                     TransactionNo = request.transactionNo,
-                    TransactionAmmoun = request.transactionAmmount,
+                    TransactionAmmoun = request.transactionAmount,
                     TransactionDate = request.transactionDate,
                     TransactionExpire = request.transactionExpire,
                     Description = request.description,
@@ -94,9 +94,9 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                     serviceCode = request.serviceCode,
                     currency = request.currency,
                     transactionNo = request.transactionNo,
-                    transactionAmount = request.transactionAmmount,
-                    transactionDate = request.transactionDate,
-                    transactionExpire = request.transactionExpire,
+                    transactionAmount = request.transactionAmount,
+                    transactionDate = request.transactionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                    transactionExpire = request.transactionExpire.ToString("yyyy-MM-dd HH:mm:ss"),
                     description = request.description,
                     callbackURL = request.callbackURL,
                     customerAccount = customerAccount,
@@ -128,6 +128,7 @@ namespace Vleko.Bayarind.Core.PaymentGateway
                     result.Error("Error save data transaction", insertTransaction.ex.Message);
                     return result;
                 }
+                result.Data = customerAccount;
                 result.OK();
             }
             catch (Exception ex)
@@ -144,6 +145,25 @@ namespace Vleko.Bayarind.Core.PaymentGateway
             var inputHash = SHA256.HashData(inputBytes);
             return Convert.ToHexString(inputHash);
         }
+
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
     }
 }
 

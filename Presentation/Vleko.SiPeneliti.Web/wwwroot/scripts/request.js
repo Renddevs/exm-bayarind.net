@@ -1,36 +1,22 @@
-function RequestData(type, url, container, field, params, callback, is_append = false, loader_style = "win8") {
-    var formData = new FormData();
-    formData.append('Url', url);
-
-    formData.append('Method', type);
-    if (params != undefined && params != null && params != "")
-        formData.append('Body', JSON.stringify(params));
-
-
+function RequestData(type, url, container, field, params, callback, isJson = true) {
     var config = {
         async: true,
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        url: window.location.origin + "/Request/DoRequest",
-        data: formData,
+        type: type,
+        url: "https://localhost:44342/api/v1/" + url,
+        contentType: "application/json",
+        data: params,
         beforeSend: function (xhr) {
             if (container != undefined && container != null && container != "")
-                ShowLoading(container, loader_style);
+                ShowLoading(container);
         },
         error: function (err) {
+            console.log(err);
             if (container != undefined && container != null && container != "")
                 $(container).waitMe('hide');
-            if (err.responseJSON != undefined && err.responseJSON != null) {
-                if (callback != undefined && callback != null && callback != "")
-                    return callback(err.responseJSON);
-                else
-                    ShowNotif(err.responseJSON.message, "error");
-            } else
-                ShowNotif("Something went wrong!", "error");
+            ShowNotif("Something went wrong", "error");
         },
         success: function (data) {
-            if (field != undefined && field != null && field != "" && is_append == false)
+            if (field != undefined && field != null && field != "")
                 $(field).html('');
 
             if (container != undefined && container != null && container != "")
@@ -40,5 +26,9 @@ function RequestData(type, url, container, field, params, callback, is_append = 
                 return callback(data);
         }
     };
+
+    if (isJson)
+        config.dataType = 'json';
+
     $.ajax(config);
 }

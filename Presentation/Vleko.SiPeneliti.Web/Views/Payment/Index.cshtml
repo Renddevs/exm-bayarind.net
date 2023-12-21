@@ -108,14 +108,23 @@
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
                             </div>
-                        </div>  
+                        </div>
+                        
+                        <div class="col-3">
+                            <label for="" class="form-label">TransactionNo</label>
+                            <input type="text" class="form-control" id="transactionNo" placeholder="" />
+                        </div>
+
+                        <div class="col-12">
+                            <label for="" class="form-label">Transaction Ammount</label>
+                            <input type="text" class="form-control" id="transactionAmmount" placeholder="" />
+                        </div>
 
                         <div class="col-md-12">
                             <label for="country" class="form-label">Payment Method</label>
-                            <select class="form-select" id="metodePembayaran" required="">
-                                <option value="">Choose...</option>
+                            <select class="form-control form-control-sm" id="metodePembayaran" required="">
                                 <option data-bankId="741400031" value="GHPSUPVA01">Pertama VA</option>
-                                <option data-bankId="00336" value="GHPSUMVA01">Mandiri Bill Payment</option>
+                                <option data-bankId="00336" value="GHPSUMVA01" selected>Mandiri Bill Payment</option>
                                 <option data-bankId="13473" value="GHPSUBRIVA01">Bri Virtual Account</option>
                                 <option data-bankId="9880138876" value="GHPSUBNIVA01">BNI VA</option>
                             </select>
@@ -127,7 +136,7 @@
 
                     <hr class="my-4">
 
-                    <button class="w-100 btn btn-primary btn-lg mb-5" type="button" id="btn_checkout">Continue to checkout</button>
+                    <button class="w-100 btn btn-primary btn-lg mb-5" type="button" id="btn_checkout" onclick="createTransaction()">Continue to checkout</button>
             </div>
         </div>
     </div>
@@ -137,12 +146,58 @@
     <script src="~/lib/waitMe/waitMe.js"></script>
     <script src="~/lib/notify.js"></script>
     <script src="~/lib/sweetalert.min.js"></script>
+    <script src="~/scripts/helper.js"></script>
+    <script src="~/scripts/request.js"></script>
     <!-- Request Js -->
     <script src="~/scripts/request.js"></script>
     <script>
-        $('#btn_checkout').on('click', function () {
-            console.log("Test");
-        });
+
+        function createTransaction() {
+            var bankId = "";
+            var serviceCode = "";
+            if ($('#metodePembayaran').val() == "GHPSUPVA01") {
+                bankId = "741400031";
+                serviceCode = 1011;
+            } else if ($('#metodePembayaran').val() == "GHPSUMVA01") {
+                bankId = "00336";
+                serviceCode = 1032;
+            } else if ($('#metodePembayaran').val() == "GHPSUBRIVA01") {
+                bankId = "13473";
+                serviceCode = 1062;
+            } else {
+                bankId = "9880138876";
+                serviceCode = 1042;
+            }
+            var params = {
+                "channelId": $('#metodePembayaran').val(),
+                "bankId": bankId,
+                "serviceCode": serviceCode,
+                "currency": "IDR",
+                "transactionNo": $('#transactionNo').val(),
+                "transactionAmount": $('#transactionAmmount').val(),
+                "transactionDate": "2023-12-21T01:23:57.576Z",
+                "transactionExpire": "2023-12-21T01:23:57.576Z",
+                "description": "just for test",
+                "callbackURL": "",
+                "customerName": $('#firstName').val() + " " + $('#lastName').val(),
+                "customerEmail": $('#email').val(),
+                "customerPhone": $('#phoneNumber').val(),
+                "customerAddress": $('#address').val()
+            };
+
+            console.log(params);
+
+            RequestData("POST", "PaymentGateway/create_transaction", null, null, JSON.stringify(params), function (result) {
+                console.log("nih", result);
+                if (result.succeeded) {
+                    ShowNotif("Checkout was successful.", "success");
+                } else if (result.code == 406) {
+                    AlertMessage("Checkout not acceptable", result.message);
+                } else {
+                    ShowNotif("Checkout was failed.", "danger");
+                }
+            });
+        }
     </script>
 </body>
 </html>

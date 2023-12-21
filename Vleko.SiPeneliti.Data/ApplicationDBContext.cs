@@ -19,9 +19,11 @@ namespace Vleko.Bayarind.Data
         {
             modelBuilder.Entity<TTransaction>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("t_transaction");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.AuthCode)
                     .HasMaxLength(350)
@@ -62,8 +64,6 @@ namespace Vleko.Bayarind.Data
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("FLAG_TYPE");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.ProcessFds).HasColumnName("PROCESS_FDS");
 

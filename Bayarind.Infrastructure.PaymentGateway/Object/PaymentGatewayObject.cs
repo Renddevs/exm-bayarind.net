@@ -24,8 +24,8 @@ namespace Bayarind.Infrastructure.PaymentGateway.Object
         public int? transactionAmount { get; set; }
         public string transactionFee { get; set; }
         public List<AdditionalFeeObject> additionafee { get; set; }
-        public DateTime transactionDate { get; set; }
-        public DateTime transactionExpire { get; set; }
+        public string transactionDate { get; set; }
+        public string transactionExpire { get; set; }
         public TransactionFeatureObject transactionFeature { get; set; }
         public List<DiscountObject> discount { get; set; }
         public int? tenor { get; set; }

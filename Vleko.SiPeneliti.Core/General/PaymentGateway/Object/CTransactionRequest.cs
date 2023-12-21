@@ -18,7 +18,7 @@ namespace Vleko.Bayarind.Core.PaymentGateway
         public int serviceCode { get; set; }
         public string currency { get; set; }
         public int transactionNo { get; set; }
-        public int transactionAmmount { get; set; }
+        public int transactionAmount { get; set; }
         public DateTime transactionDate { get; set; }
         public DateTime transactionExpire {get; set;}
         public string description { get; set; }
