@@ -135,8 +135,12 @@
                     </div>
 
                     <hr class="my-4">
-
                     <button class="w-100 btn btn-primary btn-lg mb-5" type="button" id="btn_checkout" onclick="createTransaction()">Continue to checkout</button>
+                    <div class="col-12" id="virtualAkun-container">
+                        <div class="alert alert-success" role="alert">
+                            Silahkan transfer ke virtual akun berikut <a href="#" class="alert-link" id="virtualAkun-number">an example link</a>.
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -151,7 +155,7 @@
     <!-- Request Js -->
     <script src="~/scripts/request.js"></script>
     <script>
-
+        $('#virtualAkun-container').hide();
         function createTransaction() {
             var bankId = "";
             var serviceCode = "";
@@ -190,11 +194,13 @@
             RequestData("POST", "PaymentGateway/create_transaction", null, null, JSON.stringify(params), function (result) {
                 console.log("nih", result);
                 if (result.succeeded) {
+                    $('#virtualAkun-container').show();
+                    $('#virtualAkun-number').text(result.data);
                     ShowNotif("Checkout was successful.", "success");
                 } else if (result.code == 406) {
                     AlertMessage("Checkout not acceptable", result.message);
                 } else {
-                    ShowNotif("Checkout was failed.", "danger");
+                    ShowNotif(`Checkout was failed (${result.message})`, "danger");
                 }
             });
         }
